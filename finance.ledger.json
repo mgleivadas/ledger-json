@@ -1,0 +1,51 @@
+{
+  "id": "0df958e1-d8e5-41c3-86fc-b2c097339469",
+  "title": "Finance Ledger",
+  "labels": ["FINANCE"],
+  "ledger_accounts": [
+    {
+      "title": "Company liabilities",
+      "alias": "LBLS",
+      "type": "t_account",
+      "signage": "+C"
+    },
+    {
+      "title": "Total Equity",
+      "alias": "TEQ",
+      "type": "t_account",
+      "signage": "+D"
+    },
+    {
+      "title": "Receivables",
+      "alias": "RVS",
+      "type": "t_account",
+      "signage": "+C"
+    },
+    {
+      "title": "Regulatory Exposure",
+      "alias": "REXP",
+      "type": "l_account",
+      "signage": "+D"
+    }
+  ],
+  "flows": [
+    {
+      "description": "User deposit",
+      "journal_entries": [
+        {
+          "type": "DepositCompleted",
+          "actions": ["D[REXP]_C[RVS]", "D[REXP]"]
+        }
+      ]
+    },
+    {
+      "description": "User Withdrawal",
+      "journal_entries": [
+        {
+          "type": "WithdrawalCompleted",
+          "actions": ["C[REXP]_D[RVS]", "C[REXP]"]
+        }
+      ]
+    }
+  ]
+}
